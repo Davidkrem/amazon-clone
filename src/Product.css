@@ -30,6 +30,11 @@
   border-radius: 3px;
 }
 
+button:hover {
+  background: #ffd05b;
+  transform: translate3d(0 px, 0 px, 0 px);
+}
+
 .product__price {
   margin-top: 5px;
 }

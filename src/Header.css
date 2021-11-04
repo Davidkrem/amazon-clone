@@ -39,6 +39,11 @@
   border-bottom-right-radius: 4px;
 }
 
+.header__searchIcon:hover {
+  background: #aa6a21;
+  transform: translate3d(0 px, 0 px, 0 px);
+}
+
 .header__optionLineOne {
   font-size: 10px;
 }
@@ -52,6 +57,8 @@
   display: flex;
   align-items: center;
   color: white;
+  flex-direction: column;
+  margin-top: -10px;
 }
 
 .header__cartCount {
