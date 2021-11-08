@@ -15,4 +15,12 @@
   margin-right: 10px;
   padding: 10px;
   border-bottom: 1px solid lightgray;
+  letter-spacing: 1px;
+}
+
+.hello {
+  margin-right: 2px;
+  padding: 12px;
+  font-size: 15px;
+  letter-spacing: 0.3px;
 }

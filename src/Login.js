@@ -1,20 +1,35 @@
 import React, { useState } from 'react';
 import './Login.css';
-import { Link } from 'react-router-dom';
-import { useStateValue } from './StateProvider';
+import { Link, useNavigate } from 'react-router-dom';
+import { auth } from './firebase';
 
 function Login() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const signIn = (e) => {
     e.preventDefault();
-    //firebase
+
+    auth
+      .signInWithEmailAndPassword(email, password)
+      .then((auth) => {
+        navigate('/');
+      })
+      .catch((error) => alert(error.message));
   };
 
   const register = (e) => {
     e.preventDefault();
-    //firebase
+
+    auth
+      .createUserWithEmailAndPassword(email, password)
+      .then((auth) => {
+        if (auth) {
+          navigate('/');
+        }
+      })
+      .catch((error) => alert(error.message));
   };
 
   return (
@@ -22,7 +37,7 @@ function Login() {
       <Link to="/">
         <img
           className="login__logo"
-          src="https://www.edigitalagency.com.au/wp-content/uploads/new-amazon-logo-png-transparent-background-2000-x-403-pixels-1.png"
+          src="https://logolook.net/wp-content/uploads/2021/03/Amazon-logo.png"
           alt=""
         />
       </Link>
@@ -46,7 +61,7 @@ function Login() {
             type="submit"
             className="login__signInButton"
           >
-            Sign In
+            Sign-In
           </button>
         </form>
         <p>
