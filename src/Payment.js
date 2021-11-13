@@ -9,6 +9,7 @@ import CurrencyFormat from 'react-currency-format';
 import { getCartTotal } from './reducer';
 import axios from 'axios';
 import { db } from '.firebase';
+
 function Payment() {
   const [{ cart, user }, dispatch] = useStateValue();
   const navigate = useNavigate();
@@ -41,7 +42,7 @@ function Payment() {
         payment_method: {
           card: elements.getElement(CardElement),
         },
-      }) //payment Intent is payment confirmation
+      })
       .then(({ paymentIntent }) => {
         db.collection('users')
           .doc(user?.uid)
@@ -70,26 +71,26 @@ function Payment() {
   };
 
   return (
-    <div className="payment">
-      <div className="payment__container">
+    <div className='payment'>
+      <div className='payment__container'>
         <h1>
-          Checkout (<Link to="/checkout">{cart?.length} item</Link>)
+          Checkout (<Link to='/checkout'>{cart?.length} item</Link>)
         </h1>
-        <div className="payment__section">
-          <div className="payment__title">
+        <div className='payment__section'>
+          <div className='payment__title'>
             <h3>Delivery Address</h3>
           </div>
-          <div className="payment__address">
+          <div className='payment__address'>
             <p>{user?.email}</p>
             <p>123 React Lane</p>
             <p>Los Angeles, CA</p>
           </div>
         </div>
-        <div className="payment__section">
-          <div className="payment__title">
+        <div className='payment__section'>
+          <div className='payment__title'>
             <h3>Review Items and delivery</h3>
           </div>
-          <div className="payment__items">
+          <div className='payment__items'>
             {cart.map((item) => (
               <CheckoutProduct
                 id={item.id}
@@ -101,14 +102,14 @@ function Payment() {
             ))}
           </div>
         </div>
-        <div className="payment__section">
-          <div className="payment__title">
+        <div className='payment__section'>
+          <div className='payment__title'>
             <h3>Payment Method</h3>
           </div>
-          <div className="payment__details">
+          <div className='payment__details'>
             <form onSubmit={handleSubmit}>
               <CardElement onChange={handleChange} />
-              <div className="payment__priceContainer">
+              <div className='payment__priceContainer'>
                 <CurrencyFormat
                   renderText={(value) => (
                     <>
