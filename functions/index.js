@@ -29,10 +29,6 @@ app.post('/payments/create', async (request, response) => {
   });
 });
 
-// - Listen command
+
 exports.api = functions.https.onRequest(app);
 
-// Example endpoint
-//http://localhost:5001/clone-a85db/us-central1/api
-
-//Listen command

@@ -8,7 +8,7 @@ import { SettingsPowerRounded } from '@mui/icons-material';
 import CurrencyFormat from 'react-currency-format';
 import { getCartTotal } from './reducer';
 import axios from 'axios';
-import { db } from '.firebase';
+import { db } from './firebase';
 
 function Payment() {
   const [{ cart, user }, dispatch] = useStateValue();
