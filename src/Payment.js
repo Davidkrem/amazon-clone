@@ -4,10 +4,9 @@ import CheckoutProduct from './CheckoutProduct';
 import './Payment.css';
 import { useStateValue } from './StateProvider';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
-import { SettingsPowerRounded } from '@mui/icons-material';
 import CurrencyFormat from 'react-currency-format';
 import { getCartTotal } from './reducer';
-import axios from 'axios';
+import axios from './axios';
 import { db } from './firebase';
 
 function Payment() {
@@ -21,7 +20,7 @@ function Payment() {
   const [processing, setProcessing] = useState('');
   const [error, setError] = useState(null);
   const [disabled, setDisabled] = useState(true);
-  const [clientSecret, setClientSecret] = useState(true);
+  const [clientSecret, setClientSecret] = useState('');
 
   useEffect(() => {
     const getClientSecret = async () => {
@@ -59,15 +58,15 @@ function Payment() {
         setProcessing(false);
 
         dispatch({
-          type: 'EMPTY_BASKET',
+          type: 'EMPTY_CART',
         });
-        navigate('/orders', { replace: true });
+        navigate('/orders');
       });
   };
 
   const handleChange = (e) => {
     setDisabled(e.empty);
-    SettingsPowerRounded(e.error ? e.error.message : '');
+    setError(e.error ? e.error.message : '');
   };
 
   return (
@@ -106,14 +105,16 @@ function Payment() {
           <div className='payment__title'>
             <h3>Payment Method</h3>
           </div>
+
           <div className='payment__details'>
             <form onSubmit={handleSubmit}>
               <CardElement onChange={handleChange} />
+
               <div className='payment__priceContainer'>
                 <CurrencyFormat
                   renderText={(value) => (
                     <>
-                      <h3>Order Totoal: {value}</h3>
+                      <h3>Order Total: {value}</h3>
                     </>
                   )}
                   decimalScale={2}
@@ -122,7 +123,9 @@ function Payment() {
                   thousandSeparator={true}
                   prefix={'$'}
                 />
+
                 <button disabled={processing || disabled || succeeded}>
+                  {/* put spinner then redirect to Order with order # and checkout items*/}
                   <span>{processing ? <p>Processing</p> : 'Buy Now'} </span>
                 </button>
               </div>

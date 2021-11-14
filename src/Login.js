@@ -33,33 +33,33 @@ function Login() {
   };
 
   return (
-    <div className="login">
-      <Link to="/">
+    <div className='login'>
+      <Link to='/'>
         <img
-          className="login__logo"
-          src="https://logolook.net/wp-content/uploads/2021/03/Amazon-logo.png"
-          alt=""
+          className='login__logo'
+          src='https://logolook.net/wp-content/uploads/2021/03/Amazon-logo.png'
+          alt=''
         />
       </Link>
-      <div className="login__container">
+      <div className='login__container'>
         <h1>Sign-In</h1>
-        <form action="">
+        <form action=''>
           <h5>Email </h5>
           <input
-            type="text"
+            type='text'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
           <h5>Password</h5>
           <input
-            type="password"
+            type='password'
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
           <button
             onClick={signIn}
-            type="submit"
-            className="login__signInButton"
+            type='submit'
+            className='login__signInButton'
           >
             Sign-In
           </button>
@@ -69,7 +69,7 @@ function Login() {
           Privacy Notice. To keep your account secure, use this option only on
           your personal devices.
         </p>
-        <button onClick={register} className="login__registerButton">
+        <button onClick={register} className='login__registerButton'>
           Create your Amazon Account
         </button>
       </div>

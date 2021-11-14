@@ -10,10 +10,8 @@ import Payment from './Payment';
 import { auth } from './firebase';
 import { useStateValue } from './StateProvider';
 
-
 function App() {
-  const [{}, dispatch] = useStateValue('');
-
+  const [{}, dispatch] = useStateValue();
 
   useEffect(() => {
     auth.onAuthStateChanged((authUser) => {
@@ -35,7 +33,6 @@ function App() {
   return (
     <BrowserRouter>
       <div className='App'>
-
         <Routes>
           <Route path='/login' element={<Login />} />
         </Routes>
@@ -52,5 +49,3 @@ function App() {
 }
 
 export default App;
-
-
